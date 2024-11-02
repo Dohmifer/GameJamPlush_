@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3515622663805301502}
   - component: {fileID: 7304529607540804265}
   - component: {fileID: 8998397008101891463}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   areaType: 1
   playerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   inEnemyRange: 0
   inAttackRange: 0
   enemyCircleAreaCheck: {fileID: 8741406995338768565}
@@ -244,7 +244,7 @@ MonoBehaviour:
   enemySquareAttackRange: {x: 1, y: 1}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   wallCheck: {fileID: 8707743329786676965}
   wallRange: 0.3
   wallDetected: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 2139730472992427501}
   - component: {fileID: 1115227591169905854}
   - component: {fileID: 5479494489439275773}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: HealthFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3866484136674130920}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203270501614887505}
   - component: {fileID: 6395292662449312793}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 7542421866999811963}
   - component: {fileID: 1461570584098088392}
   - component: {fileID: 6913683314250143882}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 8932254592511612469}
   - component: {fileID: 8520023378663706645}
   - component: {fileID: 7283583014639435392}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: CanvasEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 4943706522598681202}
   - component: {fileID: 8971402425802280539}
   - component: {fileID: 6850327782577169528}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6411103653605576444}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyAttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -807,7 +807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8707743329786676965}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -838,7 +838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8741406995338768565}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyArea
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -869,7 +869,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4418625449304831931}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1487101009791753543}
   - component: {fileID: 1688373432002284269}
   - component: {fileID: 7775905182911660431}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 6c2e583578ec03543a6f0435af99b04f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 20
+  jumpCooldown: 1
 --- !u!95 &7775905182911660431
 Animator:
   serializedVersion: 5

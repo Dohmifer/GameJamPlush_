@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 1665683966}
   - component: {fileID: 1665683965}
   - component: {fileID: 1665683964}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,28 +547,8 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4958946766970457266, guid: f27d2177e4190694283255f10d8d6350, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958946766970457266, guid: f27d2177e4190694283255f10d8d6350, type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958946766970457266, guid: f27d2177e4190694283255f10d8d6350, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7258335806222788480, guid: f27d2177e4190694283255f10d8d6350, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7258335806222788480, guid: f27d2177e4190694283255f10d8d6350, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7258335806222788480, guid: f27d2177e4190694283255f10d8d6350, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9137721846124658057, guid: f27d2177e4190694283255f10d8d6350, type: 3}
@@ -732,6 +712,10 @@ PrefabInstance:
     - target: {fileID: 5189851972657686749, guid: 3e8aa92f8e527cc4483853f886af484e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998397008101891463, guid: 3e8aa92f8e527cc4483853f886af484e, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
