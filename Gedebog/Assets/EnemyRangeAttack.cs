@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyRangeAttack : MonoBehaviour
 {
     public enum EnemyType
     {
-        MeleeEnemy,
-        OrcGiant
+        OrcWizard,
+        OrcBoomerang
     }
 
     public enum AreaType
@@ -19,7 +19,7 @@ public class EnemyAttack : MonoBehaviour
     public AudioSource enemyAudio;
 
     [Header("Enemy")]
-    public EnemyType enemyType = EnemyType.MeleeEnemy;
+    public EnemyType enemyType = EnemyType.OrcWizard;
     public bool facingRight = true;
     public bool canFlip = true;
     public float moveSpeed;
@@ -56,6 +56,9 @@ public class EnemyAttack : MonoBehaviour
     public float patrolSpeed;
 
     [Header("Enemy Attack")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float bulletForce;
     public float startWaitTime;
     public bool canAttack;
     private float waitTime;
@@ -70,7 +73,7 @@ public class EnemyAttack : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //player = GameObject.Find("Player").GetComponent<Transform>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
         canvasEnemy = gameObject.transform.Find("CanvasEnemy");
         //playerController = FindObjectOfType<PlayerController>();
 
@@ -156,7 +159,7 @@ public class EnemyAttack : MonoBehaviour
 
         if (!inEnemyRange && !inAttackRange)
         {
-            // waitTime = startWaitTime;
+            waitTime = startWaitTime;
             anim.SetBool("IsMoving", true);
 
             if (!groundDetected && rb2d.velocity.y != 0)
@@ -178,7 +181,7 @@ public class EnemyAttack : MonoBehaviour
         }
         else if (inEnemyRange && !inAttackRange)
         {
-            // waitTime = startWaitTime;
+            waitTime = startWaitTime;
             anim.SetBool("IsMoving", true);
 
             if (!groundDetected || wallDetected)
@@ -205,6 +208,17 @@ public class EnemyAttack : MonoBehaviour
         else if (inEnemyRange && inAttackRange)
         {
             anim.SetBool("IsMoving", false);
+
+            if (player.transform.position.x > transform.position.x && !facingRight)
+            {
+                canFlip = true;
+                Flip();
+            }
+            else if (player.transform.position.x < transform.position.x && facingRight)
+            {
+                canFlip = true;
+                Flip();
+            }
 
             if (!canAttack)
             {
@@ -233,38 +247,30 @@ public class EnemyAttack : MonoBehaviour
     {
         enemyAudio.Play();
 
-        switch (areaType)
+        switch (enemyType)
         {
-            case AreaType.Circle:
-                Collider2D[] hitCirclePlayer = Physics2D.OverlapCircleAll(enemyCircleAttackCheck.position, enemyCircleAttackRange, playerLayer);
-
-                foreach (Collider2D player in hitCirclePlayer)
+            case EnemyType.OrcWizard:
+                if (!facingRight)
                 {
-                    switch (enemyType)
-                    {
-                        case EnemyType.MeleeEnemy:
-                            //playerController.PlayerTakeDamage(5);
-                            break;
-                        case EnemyType.OrcGiant:
-                            //playerController.PlayerTakeDamage(9);
-                            break;
-                    }
+                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0f, 180f, 0f));
+                    Rigidbody2D rb2d = bullet.GetComponent<Rigidbody2D>();
+                    rb2d.velocity = transform.right * -bulletForce;
+                }
+                else
+                {
+                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0f, 0f, 0f));
+                    Rigidbody2D rb2d = bullet.GetComponent<Rigidbody2D>();
+                    rb2d.velocity = transform.right * bulletForce;
                 }
                 break;
-            case AreaType.Square:
-                Collider2D[] hitSquarePlayer = Physics2D.OverlapBoxAll(enemySquareAttackCheck.position, enemySquareAttackRange, 0f, playerLayer);
-
-                foreach (Collider2D player in hitSquarePlayer)
+            case EnemyType.OrcBoomerang:
+                if (!facingRight)
                 {
-                    switch (enemyType)
-                    {
-                        case EnemyType.MeleeEnemy:
-                            //playerController.PlayerTakeDamage(5);
-                            break;
-                        case EnemyType.OrcGiant:
-                            //playerController.PlayerTakeDamage(9);
-                            break;
-                    }
+                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0f, 180f, 0f));
+                }
+                else
+                {
+                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0f, 0f, 0f));
                 }
                 break;
         }
