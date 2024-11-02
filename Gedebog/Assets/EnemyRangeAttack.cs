@@ -61,13 +61,14 @@ public class EnemyRangeAttack : MonoBehaviour
     public float bulletForce;
     public float startWaitTime;
     public bool canAttack;
-    private float waitTime;
+    public float waitTime;
 
     private Rigidbody2D rb2d;
     private Animator anim;
     private Transform player;
     private Transform canvasEnemy;
     //private PlayerController playerController;
+    private EnemyAttackController attackController;
 
     void Awake()
     {
@@ -76,6 +77,8 @@ public class EnemyRangeAttack : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Transform>();
         canvasEnemy = gameObject.transform.Find("CanvasEnemy");
         //playerController = FindObjectOfType<PlayerController>();
+        attackController = GetComponent<EnemyAttackController>();
+        attackController.SetDirection(facingRight);
 
         waitTime = startWaitTime;
         theScale.x = 1;
@@ -292,6 +295,7 @@ public class EnemyRangeAttack : MonoBehaviour
         if (canFlip)
         {
             facingRight = !facingRight;
+            attackController.SetDirection(facingRight);
 
             theScale = transform.localScale;
             theScale.x *= -1;
