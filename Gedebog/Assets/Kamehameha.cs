@@ -10,6 +10,7 @@ public class Kamehameha : MonoBehaviour
     public float cooldown = 10f;         // Cooldown time in seconds
     public int damage = 5;               // Damage dealt per second by the Kamehameha
     public MonoBehaviour playerMovement; // Reference to the player movement script
+    public Animator animator;            // Reference to the Animator component
 
     private bool isFiring = false;       // To prevent firing multiple times while pressing X
     private float cooldownTimer = 0f;    // Tracks the cooldown time
@@ -41,6 +42,13 @@ public class Kamehameha : MonoBehaviour
     IEnumerator FireKamehameha()
     {
         isFiring = true;
+
+        // Set the Animator parameters for the second skill
+        if (animator != null)
+        {
+            animator.SetBool("SecondSkill", true);
+            animator.SetBool("IsSecondSkill", true);
+        }
 
         // Disable the player movement while firing the Kamehameha
         if (playerMovement != null)
@@ -76,6 +84,13 @@ public class Kamehameha : MonoBehaviour
         if (playerMovement != null)
         {
             playerMovement.enabled = true;
+        }
+
+        // Reset the Animator parameters after finishing the skill
+        if (animator != null)
+        {
+            animator.SetBool("SecondSkill", false);
+            animator.SetBool("IsSecondSkill", false);
         }
 
         // Destroy the Kamehameha instance
