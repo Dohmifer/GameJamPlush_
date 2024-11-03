@@ -97,4 +97,21 @@ public class PlayerMovement : MonoBehaviour
         shootPointScale.x *= -1;
         shootPoint.localPosition = shootPointScale;
     }
+
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        if (collision2D.gameObject.CompareTag("mp"))
+        {
+            this.transform.parent = collision2D.transform;
+        }
+    }
+
+    void OnCollisionExit2D (Collision2D col2D)
+    {
+        if (col2D.gameObject.CompareTag("mp"))
+        {
+            this.transform.parent = null;
+        }
+    }
+
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1380741201117434095}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Attack Point
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 986631655026440636}
   - component: {fileID: 428246691718149262}
   - component: {fileID: 7273308923441210006}
-  m_Layer: 0
+  - component: {fileID: 9084946795646975472}
+  m_Layer: 3
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +142,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9084946795646975472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945780220363262176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7118339070c731d4e94770cc0f0e1620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
 --- !u!1 &6465959143238160846
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4084282487507004892}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ThirdSkillPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -181,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2717568194804309806}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SecondSkillPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4200657186321218348}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FourtSkill
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
