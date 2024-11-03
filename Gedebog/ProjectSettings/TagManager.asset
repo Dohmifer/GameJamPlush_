@@ -6,6 +6,8 @@ TagManager:
   tags:
   - tanah
   - mp
+  - Enemy
+  - mpv2
   layers:
   - Default
   - TransparentFX

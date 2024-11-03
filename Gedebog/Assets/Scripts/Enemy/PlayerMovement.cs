@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb; // Rigidbody2D for applying jump force
     private float jumpCooldownTimer = 0f; // Timer to manage jump cooldown
 
+    private bool hadapkanan = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Initialize Rigidbody2D
@@ -21,10 +23,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             MoveLeft();
+            if (hadapkanan)
+            {
+                flip();
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
             MoveRight();
+            if (!hadapkanan)
+            {
+                flip();
+            }
         }
 
         // Jump if space is pressed and not on cooldown
@@ -59,5 +69,29 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply upward force for jump
         canJump = false; // Start jump cooldown
         jumpCooldownTimer = jumpCooldown; // Reset cooldown timer to 1 second
+    }
+
+    void flip()
+    {
+        hadapkanan = !hadapkanan;
+        Vector3 scale = transform.localScale;
+             scale.x *= -1;
+             transform.localScale = scale;
+    }
+
+    void OnCollisionEnter2D (Collision2D colll)
+    {
+        if(colll.gameObject.CompareTag("mp"))
+        {
+            this.transform.parent = colll.transform;
+        }
+    }
+
+    void OnCollisionExit2D (Collision2D EXcol)
+    {
+        if (EXcol.gameObject.CompareTag("mp"))
+        {
+            this.transform.parent = null;
+        }
     }
 }
