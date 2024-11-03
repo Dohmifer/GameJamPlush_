@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5911887181968442815}
   - component: {fileID: 1163023557974440870}
   - component: {fileID: 2092595815021600045}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: platformMOVe
   m_TagString: mp
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 172428731875004368}
   - component: {fileID: 1980126037743706964}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: finish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7743784178599008527}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: moving platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8148964564501807341}
   - component: {fileID: 335203008589536465}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}

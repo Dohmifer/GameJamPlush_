@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5162566772311495923}
   - component: {fileID: 2262018108758516212}
   - component: {fileID: 8379635403269798533}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ground
   m_TagString: tanah
   m_Icon: {fileID: 0}
