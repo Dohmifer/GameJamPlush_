@@ -244,7 +244,7 @@ MonoBehaviour:
   enemySquareAttackRange: {x: 1, y: 1}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
   wallCheck: {fileID: 8707743329786676965}
   wallRange: 0.3
   wallDetected: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
