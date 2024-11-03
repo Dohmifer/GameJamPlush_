@@ -1267,6 +1267,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 428246691718149262, guid: dcd20c315de65794cb735b33a165d704, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 255fa3795de7ae34287875cced92c493, type: 3}
     - target: {fileID: 986631655026440636, guid: dcd20c315de65794cb735b33a165d704, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.47
@@ -1285,15 +1289,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986631655026440636, guid: dcd20c315de65794cb735b33a165d704, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 986631655026440636, guid: dcd20c315de65794cb735b33a165d704, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 986631655026440636, guid: dcd20c315de65794cb735b33a165d704, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 986631655026440636, guid: dcd20c315de65794cb735b33a165d704, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
