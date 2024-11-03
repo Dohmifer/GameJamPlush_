@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     public int damage = 10; // Damage dealt by the projectile
     public float lifetime = 2f; // Time before the projectile is destroyed
 
+    [HideInInspector] public Vector2 direction = Vector2.right; // Direction of the projectile (default is right)
+
     void Start()
     {
         // Destroy the projectile after a certain time to avoid clutter
@@ -16,17 +18,34 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        // Move the projectile in the direction it is facing
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        // Move the projectile in the specified direction
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        Debug.Log("Projectile collided with: " + collision.name); // Debug to check collision
+
+        if (collision.CompareTag("Enemy")) // Make sure the boss has the "Enemy" tag
         {
-            // Placeholder for actual damage application
-            Debug.Log("Hit enemy with damage: " + damage);
+            Debug.Log("Projectile hit an enemy!");
+
+            BossHealth bossHealth = collision.GetComponent<BossHealth>();
+            if (bossHealth != null)
+            {
+                Debug.Log("Applying damage to boss.");
+                bossHealth.TakeDamage(damage); // Apply damage to the boss
+            }
+            else
+            {
+                Debug.Log("BossHealth component not found on enemy!");
+            }
+            
             Destroy(gameObject); // Destroy the projectile upon hitting an enemy
+        }
+        else
+        {
+            Debug.Log("Collision not with Enemy tag. No damage applied.");
         }
     }
 }

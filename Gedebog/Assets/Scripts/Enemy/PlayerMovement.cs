@@ -5,12 +5,17 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
     public float jumpCooldown = 1f;
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+    public Transform shootPoint; // Reference to the shoot point
 
     private bool canJump = true;
+    private bool isFacingRight = true;
     private Rigidbody2D rb;
-    private float jumpCooldownTimer = 0f;
     private Animator animator;
-    private bool isFacingRight = true; // Track the direction the player is facing
+    private float jumpCooldownTimer = 0f;
+    private bool isGrounded = false;
 
     void Start()
     {
@@ -21,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         bool isMoving = false;
+
+        // Update ground check
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        animator.SetBool("IsJumping", !isGrounded);
 
         // Horizontal movement
         if (Input.GetKey(KeyCode.A))
@@ -36,11 +45,10 @@ public class PlayerMovement : MonoBehaviour
             if (!isFacingRight) Flip(); // Flip to face right
         }
 
-        // Set the "IsMoving" parameter in Animator
         animator.SetBool("IsMoving", isMoving);
 
         // Jump if space is pressed and not on cooldown
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
         {
             Jump();
             animator.SetBool("IsJumping", true);
@@ -53,11 +61,10 @@ public class PlayerMovement : MonoBehaviour
             if (jumpCooldownTimer <= 0f)
             {
                 canJump = true;
-                animator.SetBool("IsJumping", false); // Reset jumping animation after cooldown
+                animator.SetBool("IsJumping", false);
             }
         }
 
-        // Set yVelocity in Animator (for tracking vertical movement)
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
@@ -73,65 +80,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply upward force for jump
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         canJump = false;
         jumpCooldownTimer = jumpCooldown;
     }
 
-    // Method to flip the character's facing direction
     private void Flip()
     {
-        isFacingRight = !isFacingRight; // Toggle the facing direction
+        isFacingRight = !isFacingRight;
         Vector3 scale = transform.localScale;
-        scale.x *= -1; // Flip the x-axis scale
+        scale.x *= -1;
         transform.localScale = scale;
-    }
 
-    // Attack example method
-    public void Attack()
-    {
-        animator.SetTrigger("Attack");
-        animator.SetBool("IsAttacking", true);
-    }
-
-    // Methods for skills
-    public void UseFirstSkill()
-    {
-        animator.SetBool("CanFirstSkill", true);
-        animator.SetTrigger("FirstSkill");
-        animator.SetBool("IsFirstSkill", true);
-    }
-
-    public void UseSecondSkill()
-    {
-        animator.SetBool("CanSecondSkill", true);
-        animator.SetTrigger("SecondSkill");
-        animator.SetBool("IsSecondSkill", true);
-    }
-
-    public void UseThirdSkill()
-    {
-        animator.SetBool("CanThirdSkill", true);
-        animator.SetTrigger("ThirdSkill");
-        animator.SetBool("IsThirdSkill", true);
-    }
-
-    // Resetting skill states (after the animation or skill duration ends)
-    public void ResetSkillStates()
-    {
-        animator.SetBool("IsAttacking", false);
-        animator.SetBool("IsFirstSkill", false);
-        animator.SetBool("IsSecondSkill", false);
-        animator.SetBool("IsThirdSkill", false);
-    }
-
-    public void SetIsDead(bool isDead)
-    {
-        animator.SetBool("IsDead", isDead);
-    }
-
-    public void SetIsDashing(bool isDashing)
-    {
-        animator.SetBool("IsDashing", isDashing);
+        // Flip the shootPoint position
+        Vector3 shootPointScale = shootPoint.localPosition;
+        shootPointScale.x *= -1;
+        shootPoint.localPosition = shootPointScale;
     }
 }
