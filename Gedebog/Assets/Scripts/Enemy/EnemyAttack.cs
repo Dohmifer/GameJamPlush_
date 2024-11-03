@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public enum EnemyType
     {
-        OrcBlade,
+        MeleeEnemy,
         OrcGiant
     }
 
@@ -19,7 +19,7 @@ public class EnemyAttack : MonoBehaviour
     public AudioSource enemyAudio;
 
     [Header("Enemy")]
-    public EnemyType enemyType = EnemyType.OrcBlade;
+    public EnemyType enemyType = EnemyType.MeleeEnemy;
     public bool facingRight = true;
     public bool canFlip = true;
     public float moveSpeed;
@@ -70,7 +70,7 @@ public class EnemyAttack : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //player = GameObject.Find("Player").GetComponent<Transform>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
         canvasEnemy = gameObject.transform.Find("CanvasEnemy");
         //playerController = FindObjectOfType<PlayerController>();
 
@@ -156,7 +156,7 @@ public class EnemyAttack : MonoBehaviour
 
         if (!inEnemyRange && !inAttackRange)
         {
-            // waitTime = startWaitTime;
+            waitTime = startWaitTime;
             anim.SetBool("IsMoving", true);
 
             if (!groundDetected && rb2d.velocity.y != 0)
@@ -173,12 +173,12 @@ public class EnemyAttack : MonoBehaviour
                 Vector2 targetPosition = new Vector2(transform.position.x + transform.right.x * theScale.x, transform.position.y);
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
 
-                // transform.Translate((Vector2.right * theScale.x) * patrolSpeed * Time.deltaTime);
+                transform.Translate((Vector2.right * theScale.x) * patrolSpeed * Time.deltaTime);
             }
         }
         else if (inEnemyRange && !inAttackRange)
         {
-            // waitTime = startWaitTime;
+            waitTime = startWaitTime;
             anim.SetBool("IsMoving", true);
 
             if (!groundDetected || wallDetected)
@@ -242,7 +242,7 @@ public class EnemyAttack : MonoBehaviour
                 {
                     switch (enemyType)
                     {
-                        case EnemyType.OrcBlade:
+                        case EnemyType.MeleeEnemy:
                             //playerController.PlayerTakeDamage(5);
                             break;
                         case EnemyType.OrcGiant:
@@ -258,7 +258,7 @@ public class EnemyAttack : MonoBehaviour
                 {
                     switch (enemyType)
                     {
-                        case EnemyType.OrcBlade:
+                        case EnemyType.MeleeEnemy:
                             //playerController.PlayerTakeDamage(5);
                             break;
                         case EnemyType.OrcGiant:

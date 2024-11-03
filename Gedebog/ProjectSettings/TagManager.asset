@@ -4,18 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Ground
+  - tanah
+  - mp
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Foreground
+  - Enemy
   - Water
   - UI
-  - Ground
   - Player
-  - Enemy
+  - Ground
+  - Foreground
   - 
   - 
   - 
@@ -42,7 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Foreground
-    uniqueID: 1399512589
     locked: 0
